@@ -1,0 +1,149 @@
+<div class="dn-contact">
+  <div class="container-fluid">
+    <div class='row'>
+      <div class="col-md-6">
+        <h2><?= $this->_("Contactez-nous") ?></h2>
+        <address class="text-center">
+          <?= $this->address ?>
+        </address>  
+        <?php
+        $form = $this->form;
+        $form->prepare();
+        echo $this->form()->openTag($form);
+        echo $this->formElement($form->get('contact_csrf'));
+        /**  Create input group for a specific field in the form */
+        $inputGroup = function($input) {
+          ?>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <?php echo $this->formElement($input) ?>
+            </div>
+            <?php if (count($input->getMessages()) > 0): ?>
+              <div class="col-sm-12 form-errors">
+                <?php echo $this->formElementErrors($input); ?>
+              </div>
+            <?php endif; ?>
+          </div>
+          <?php
+        }
+        ?>
+
+        <?php $inputGroup($form->get("name")) ?>
+        <?php $inputGroup($form->get("email")) ?>
+        <?php $inputGroup($form->get("subject")) ?>
+        <?php $inputGroup($form->get("body")) ?>
+        <?php echo $this->formElement($form->get('contact_csrf')); ?>
+
+        <div class="form-group "> 
+          <div class="col-sm-12">
+            <input type="reset" class="btn btn-default" value="<?= $this->_("Annuler") ?>"/>
+            <?php echo $this->formInput($form->get("send")) ?>
+          </div>
+        </div>
+        <?php echo $this->form()->closeTag(); ?>
+      </div>
+      <?php if ($this->useGmap): ?>
+        <div class="col-md-6">
+          <h2><?= $this->_("Plan d'accès") ?></h2>
+          <div id="dncontact-map-canvas" style="width: 100%; height: 468px"></div>
+        </div>
+      <?php endif; ?>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+<?php $this->headScript()->captureStart(); ?>
+<?php if ($this->useGmap): ?>
+  <?php $this->headScript()->appendFile("https://maps.googleapis.com/maps/api/js?v=3.exp"); ?>
+
+    //Initialisation de la carte google map
+    (function loadMap($, google) {
+      //         return false;
+      var $map = $('#dncontact-map-canvas'),
+              GMap, GInfoWindow, GPosition;
+      try {
+        initializeMap($map[0]);
+      } catch (err) {
+        console.log("Google is not initialized");
+      }
+
+      function initializeMap(map_div) {
+        var positionTab = '<?php echo $this->gmapCenter ?>'.split(",");
+        GPosition = false;
+        if (positionTab.length > 1) {
+          GPosition = new google.maps.LatLng(positionTab[0], positionTab[1]);
+        }
+        if (GPosition === false) {
+          throw "You must specify a valid position !";
+        }
+        var mapOptions = <?php echo $this->gmapOptions ?>;
+        mapOptions.center = GPosition;
+        GMap = new google.maps.Map(map_div, mapOptions);
+        var infoText = '<?php echo $this->gmapInfoHtml ?>';
+        if (infoText != '') {
+          GInfoWindow = new google.maps.InfoWindow({
+            content: infoText,
+            width: 500,
+            height: 250
+          });
+          GInfoWindow.open(GMap);
+          GInfoWindow.setPosition(GPosition);
+        }
+      }
+    })(jQuery, google);
+
+<?php endif; ?>
+  (function ($) {
+    var $contacForm = $("#contact-form");
+    function $getErrorWrapper($element) {
+      var $parent = $element.parents(".form-group");
+      var errorWrapper = $(".form-errors", $parent);
+      if (errorWrapper.length > 0) {
+        return errorWrapper;
+      }
+      return $('<div class="col-sm-12 form-errors" />').appendTo($parent);
+    }
+    $contacForm.validate({
+      rules: {
+        name: "required",
+        email: {
+          required: true,
+          email: true
+        },
+        subject: "required",
+        body: {
+          required: true,
+          minlength: 50
+        },
+      },
+      //TODO Translate messages
+      messages: {
+        name: "Vous devez spécifier votre nom",
+        email: {
+          required: "Vous devez spécifier votre adresse de messagerie",
+          email: "Vous devez entrer un email valide du type name@domain.com"
+        },
+        subject: "Vous devez spécifier l'objet de votre message",
+        body: {
+          required: "Vous devez écrire un message",
+          minlength: "Vous devez écrire un message d'au moins 50 caractères",
+        },
+      },
+      success: function (label, element) {
+        $getErrorWrapper($(element)).remove();
+        $(element).parents(".form-group").removeClass("has-error");
+      },
+      errorClass: 'form-error',
+      errorElement: 'li',
+      errorPlacement: function ($error, $element) {
+        var $wrapper = $getErrorWrapper($element).html('').append($("<ul />").append($error));
+        if ($error.length > 0) {
+          $element.parents(".form-group").addClass("has-error");
+          return;
+        }
+      }
+    });
+  })(jQuery);
+<?php $this->headScript()->captureEnd(); ?>
+</script>

@@ -1,0 +1,20 @@
+<?php echo $this->doctype(); ?>
+<html lang="fr">
+   <head>
+      <meta charset="utf-8">
+      <title>DN Contact</title>
+      <link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
+   </head>
+   <body>
+      <div class="container">
+         <div id="content">
+            <?php echo $this->content ?>
+         </div>
+         <div id="footer">     
+            <p class="pull-left">&copy; Copyright 2006-2014 - DN Contact. Tous droits réservés.</p>
+         </div>
+      </div>
+      <?php echo $this->headScript() ?>
+      <?php echo $this->inlineScript() ?>
+   </body>
+</html>

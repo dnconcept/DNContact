@@ -1,0 +1,139 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ICNN\n"
+"POT-Creation-Date: 2015-04-25 15:33+0100\n"
+"PO-Revision-Date: 2015-04-25 15:34+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.5\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;translate\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: view\n"
+"X-Poedit-SearchPath-1: src\n"
+"X-Poedit-SearchPath-2: config\n"
+"X-Poedit-SearchPath-3: .\n"
+"X-Poedit-SearchPath-4: src/DNContact\n"
+
+#: src/DNContact/Controller/ContactController.php:84
+msgid "Une erreure est apparue pendant l'envoi du message :( Veuillez réessayer"
+msgstr "An error occurs while sending the message :( Please try again"
+
+#: src/DNContact/Form/ContactForm.php:34
+msgid "Nom"
+msgstr "Name"
+
+#: src/DNContact/Form/ContactForm.php:35
+msgid "Objet"
+msgstr "Purpose"
+
+#: src/DNContact/Form/ContactForm.php:37
+msgid "Adresse de messagerie"
+msgstr "E-mail address"
+
+#: src/DNContact/Form/ContactForm.php:47
+msgid "Votre email n'est pas valide. Il doit être du type contact@domain.ext"
+msgstr ""
+
+#: src/DNContact/Form/ContactForm.php:56
+msgid "Envoyer"
+msgstr "Send"
+
+#: src/DNContact/Form/ContactForm.php:65
+msgid "Vous devez spécifier votre nom"
+msgstr "You must specify your name"
+
+#: src/DNContact/Form/ContactForm.php:66
+msgid "Vous devez spécifier votre adresse de messagerie"
+msgstr "You must specify your email address"
+
+#: src/DNContact/Form/ContactForm.php:67
+msgid "Vous devez spécifier l'objet de votre message"
+msgstr "You must specify the subject of your message"
+
+#: src/DNContact/Form/ContactForm.php:68
+msgid "Vous devez écrire un message"
+msgstr "You must write a message"
+
+#: view/dn-contact/contact/contact.phtml:5
+msgid "Contactez-nous"
+msgstr "Contact us"
+
+#: view/dn-contact/contact/contact.phtml:39
+msgid "Annuler"
+msgstr "Cancel"
+
+#: view/dn-contact/contact/contact.phtml:47
+msgid "Plan d'accès"
+msgstr "Find us on the map"
+
+#: view/error/404.phtml:1
+msgid "Une erreure 404 est apparue"
+msgstr "A 404 error occured"
+
+#: view/error/404.phtml:10
+msgid "Le controlleur demandé n'a pas pu dispatché la requête."
+msgstr "The requested controller was unable to dispatch the request."
+
+#: view/error/404.phtml:13
+msgid "Le controlleur demandé n'a pas été trouvé."
+msgstr "The requested controller could not be mapped to an existing controller class."
+
+#: view/error/404.phtml:16
+msgid "Le controlleur demandé n'est pas correct."
+msgstr "The requested controller was not dispatchable."
+
+#: view/error/404.phtml:19
+msgid "L'URL demandée n'a pas pu être trouvée."
+msgstr "The requested URL could not be matched by routing."
+
+#: view/error/404.phtml:22
+msgid "Nous ne pouvons pas déterminer la raison de cette erreure pour l'instant"
+msgstr "We cannot determine at this time why a 404 was generated."
+
+#: view/error/404.phtml:34
+msgid "Controller"
+msgstr "Controller"
+
+#: view/error/404.phtml:39
+#, php-format
+msgid "resolves to %s"
+msgstr ""
+
+#: view/error/404.phtml:51 view/error/index.phtml:8
+msgid "Additional information"
+msgstr ""
+
+#: view/error/404.phtml:54 view/error/404.phtml:78 view/error/index.phtml:11
+#: view/error/index.phtml:35
+msgid "File"
+msgstr ""
+
+#: view/error/404.phtml:58 view/error/404.phtml:82 view/error/index.phtml:15
+#: view/error/index.phtml:39
+msgid "Message"
+msgstr ""
+
+#: view/error/404.phtml:62 view/error/404.phtml:86 view/error/index.phtml:19
+#: view/error/index.phtml:43
+msgid "Stack trace"
+msgstr ""
+
+#: view/error/404.phtml:72 view/error/index.phtml:29
+msgid "Previous exceptions"
+msgstr ""
+
+#: view/error/404.phtml:101 view/error/index.phtml:58
+msgid "No Exception available"
+msgstr ""
+
+#: view/error/index.phtml:1
+msgid "An error occurred"
+msgstr ""
+
+#~ msgid "Une erreure est apparue pendant l'envoi du message :("
+#~ msgstr "An error occurs while sending the message. Please try again"

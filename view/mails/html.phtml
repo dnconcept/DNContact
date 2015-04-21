@@ -1,0 +1,25 @@
+<?php $title = "ICNN | Message reçu depuis le site internet"; ?>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><?= $title; ?></title>
+  </head>
+  <style type="text/css">
+    a {color: #e3e3e3;}
+    #header {background-color: rgb(66, 139, 202);padding: 10px 5px;color: #fff;}
+    #footer {background-color: rgb(66, 139, 202);padding: 5px 5px;color: #fff;}
+    #content {padding: 20px;margin-bottom: 20px;background-color: #f4f4f4;border-radius: 5px;}
+  </style>
+  <body style="font-family: 'Arial', sans-serif">
+    <div id='header'>
+      <h2><?= $title; ?></h2>
+    </div>
+    <p>Vous avez reçu un mail de la part de <?= $this->name; ?> (<?= $this->email; ?>)</p>
+    <div id='content'>
+    <?php echo $this->content; ?>
+    </div>
+    <div id='footer'>
+      <p>&copy; Copyright 2006-2015 - <a href="http://www.icnn.fr">ICNN</a></p>
+    </div>
+  </body>
+</html>
