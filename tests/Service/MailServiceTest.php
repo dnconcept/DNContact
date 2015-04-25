@@ -41,10 +41,10 @@ class AdminMailServiceTest extends PHPUnit {
       $beforeSend = false;
       $afterSend = false;
       $eventManager = $this->mailService->getEventManager();
-      $eventManager->attach(MailService::BEFORE_SEND, function() use(&$beforeSend) {
+      $eventManager->attach(AdminMailService::BEFORE_SEND, function() use(&$beforeSend) {
          $beforeSend = true;
       });
-      $eventManager->attach(MailService::AFTER_SEND, function() use(&$afterSend) {
+      $eventManager->attach(AdminMailService::AFTER_SEND, function() use(&$afterSend) {
          $afterSend = true;
       });
       $this->mailService->send();

@@ -151,11 +151,11 @@ class AdminMailService implements EventManagerAwareInterface {
 
   public function send() {
     //On déclenche l'événement BEFORE_SEND
-    $this->getEventManager()->trigger(self::BEFORE_SEND, $this, [$this->message]);
+    $this->getEventManager()->trigger(self::BEFORE_SEND, $this, ["message" => $this->message]);
     //On envoie le message
     $this->transport->send($this->message);
     //On déclenche l'événement AFTER_SEND
-    $this->getEventManager()->trigger(self::AFTER_SEND, $this, [$this->message]);
+    $this->getEventManager()->trigger(self::AFTER_SEND, $this, ["message" => $this->message]);
   }
 
   /**
