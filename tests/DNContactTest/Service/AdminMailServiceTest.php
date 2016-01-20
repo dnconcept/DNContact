@@ -2,31 +2,40 @@
 
 namespace DNContactTest\Service;
 
-use Bootstrap;
+use DNContactTest\Bootstrap;
 use DNContact\Service\AdminMailService;
-use PHPUnit_Framework_TestCase as PHPUnit;
 
 /**
  * Description of AdminMailServiceTest
  *
  * @author Nicolas Desprez <contact@dnconcept.fr>
  */
-class AdminMailServiceTest extends PHPUnit {
+class AdminMailServiceTest extends \PHPUnit_Framework_TestCase {
 
+   /** @var  AdminMailService */
    private $mailService;
    private $serviceManager;
 
    protected function setUp() {
       $serviceManager = $this->serviceManager = Bootstrap::getServiceManager();
       $this->mailService = $serviceManager->get("dncontact_mail_service");  
-      $this->mailService->getTransport()->setCallable(function($to, $subject, $message, $headers, $parameters) {
-         echo "- Mail Sent to $to with subject $subject" . PHP_EOL;
-      });
+      $this->mailService->getTransport()->setCallable([$this, "callableTest"]);
+   }
+
+   /**
+    * Replacement function for testing emails
+    * @param $to
+    * @param $subject
+    * @param $message
+    * @param $headers
+    * @param $parameters
+    */
+   public function callableTest($to, $subject, $message, $headers, $parameters) {
+      echo "- Mail Sent to $to with subject $subject" . PHP_EOL;
    }
 
    //On test que la fonction callback de transport du mail a bien été appelée avec la fonction send() du service
    public function testTransportCallbackHasBeenCalled() {
-      $this->assertTrue(true);
       $test = false;
       $this->mailService->getTransport()->setCallable(function() use (&$test) {
          $test = true;
@@ -50,6 +59,16 @@ class AdminMailServiceTest extends PHPUnit {
       $this->mailService->send();
       $this->assertTrue($beforeSend);
       $this->assertTrue($afterSend);
+   }
+
+   public function testGetTransport()
+   {
+     $this->assertInstanceOf(\Zend\Mail\Transport\Sendmail::class, $this->mailService->getTransport());
+   }
+
+   public function testGetMessage()
+   {
+      $this->assertInstanceOf(\Zend\Mail\Message::class, $this->mailService->getMessage());
    }
 
 }

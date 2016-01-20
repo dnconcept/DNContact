@@ -33,12 +33,12 @@ AutoloaderProviderInterface, ConfigProviderInterface, ServiceProviderInterface {
   public function getServiceConfig() {
     return [
         'invokables' => [
-            'dncontact_form' => 'DNContact\Form\ContactForm',
         ],
         'factories' => [
             'dncontact_module_options' => 'DNContact\Factory\ModuleOptionsFactory',
             'dncontact_map_options' => 'DNContact\Factory\MapOptionsFactory',
             'dncontact_mail_service' => 'DNContact\Factory\AdminMailServiceFactory',
+            'dncontact_form' => 'DNContact\Factory\ContactFormFactory',
         ]
     ];
   }

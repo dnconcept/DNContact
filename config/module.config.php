@@ -8,6 +8,10 @@ return [
                 'port' => 1025, //Port de maildev à lancer en console
             ]
         ],
+        'form-options' => [
+            'minLength' => 30,
+            'maxLength' => 1500,
+        ],
     ],
     'controllers' => [
         'factories' => [
@@ -17,9 +21,6 @@ return [
     'service_manager' => [
         'abstract_factories' => [
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
-        ],
-        'aliases' => [
-            'translator' => 'MvcTranslator',
         ],
     ],
     'translator' => [
@@ -55,6 +56,8 @@ return [
         'template_map' => [
             'error/404' => __DIR__ . '/../view/error/404.phtml',
             'error/index' => __DIR__ . '/../view/error/index.phtml',
+            'mail/html' => __DIR__ . '/../view/mails/html.phtml',
+            'mail/text' => __DIR__ . '/../view/mails/text.phtml',
         ],
         'template_path_stack' => [
             __DIR__ . '/../view',

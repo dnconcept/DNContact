@@ -2,20 +2,13 @@
 
 return [
     'dn-contact' => [
-        'mail_transport' => [ //Zend\Mail\Transport\Factory
-            'type' => 'smtp',   // 'file' | 'null' | 'sendmail' | 'smtp'
-            'options' => [
-                'port' => 1025, //Port de maildev à lancer en console
-            ]
-        ],
-        'form-options' => [
-            'minLength' => 30,
-            'maxLength' => 1500,
+        'mail_transport' => [
+            'type' => 'sendmail',
         ],
         'success_message' => "Votre message a été correctement envoyé !",
         'redirect_route' => "home",
-        'admin_mail' => "admin@mail.com",
-        'admin_name' => "Administrateur",
+        'admin_mail' => "admin@test.com",
+        'admin_name' => "Administrateur TEST",
         'use_gmap' => true,
         'address' => '<strong>Entreprise</strong><br/>78, rue des papillons<br/>17 000 La Rochelle<br/>',
         'gmap' => [
@@ -25,6 +18,6 @@ return [
                 'scrollwheel' => false
             ],
             'center' => "46.1418, -1.1675",
-        ]
+        ],
     ],
 ];

@@ -18,7 +18,9 @@ class AdminMailServiceFactory implements FactoryInterface {
     $moduleOptions = $serviceLocator->get("dncontact_module_options");
     $config = $serviceLocator->get("config")["dn-contact"];
     $mailTransport = Factory::create(isset($config["mail_transport"]) ? $config["mail_transport"] : []);
-    return new AdminMailService($mailTransport, $moduleOptions);
+    $service = new AdminMailService($mailTransport, $moduleOptions);
+    $service->setServiceLocator($serviceLocator);
+    return $service;
   }
 
 }

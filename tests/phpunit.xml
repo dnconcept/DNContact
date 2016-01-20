@@ -2,25 +2,23 @@
 <phpunit 
   bootstrap="Bootstrap.php"
   colors="true"
-  backupGlobals="false"
-  backupStaticAttributes="false"
-  convertErrorsToExceptions="true"
-  convertNoticesToExceptions="false"
-  convertWarningsToExceptions="false"
-  forceCoversAnnotation="false"
-  mapTestClassNameToCoveredClassName="false"
-  processIsolation="false"
-  stopOnError="true"
-  stopOnFailure="true"
-  stopOnIncomplete="false"
-  stopOnSkipped="false"
-  verbose="true"
 >
+  <!--backupGlobals="false"-->
+  <!--backupStaticAttributes="false"-->
+  <!--convertErrorsToExceptions="true"-->
+  <!--convertNoticesToExceptions="false"-->
+  <!--convertWarningsToExceptions="false"-->
+  <!--forceCoversAnnotation="false"-->
+  <!--mapTestClassNameToCoveredClassName="false"-->
+  <!--processIsolation="false"-->
+  <!--stopOnError="true"-->
+  <!--stopOnFailure="true"-->
+  <!--stopOnIncomplete="false"-->
+  <!--stopOnSkipped="false"-->
+  <!--verbose="true"-->
   <testsuites>
     <testsuite name="DNContactUnitTest">
-      <directory>./Controller</directory>
-      <directory>./Module</directory>
-      <directory>./Service</directory>
+      <directory>./DNContactTest</directory>
     </testsuite>
   </testsuites>
 </phpunit>
